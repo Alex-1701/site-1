@@ -1,0 +1,8 @@
+.link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+    gap: 5px;
+    color: #004381;
+}

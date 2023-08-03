@@ -1,0 +1,43 @@
+.side {
+    background: #ABDFFF;
+    width: 270px;
+    position: relative;
+}
+
+.inputBlock {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchBtn {
+    background: none;
+    border: none;
+}
+
+.searchImg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.searchInput {
+    background: none;
+    color: #004381;
+    border: none;
+    padding: 15px;
+    width: 90%;
+    outline: none;
+}
+
+.searchInput::placeholder {
+    color: rgba(0, 67, 129, 0.70);
+}
+
+.category {
+    padding: 8px 15px;
+}
+
+.category:hover {
+    background: #60BDF8;
+    cursor: pointer;
+}
