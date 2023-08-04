@@ -6,8 +6,8 @@ import tiktok from '../../img/tiktok.svg';
 import menu from '../../img/Menu.svg';
 import Link from "../Link/Link";
 import EnterBtn from "../EnterBth/EnterBtn";
-import {useEffect, useRef, useState} from "react";
 import WindowSize from "../WindowSize";
+import Cookies from "js-cookie";
 
 export default function Nav() {
     let {size, ref} = WindowSize();
@@ -19,7 +19,12 @@ export default function Nav() {
                     size < 500 &&
                     <img src={menu} className="menu" alt="menu"/>
                 }
-                <img src={logo} className="logo" alt="vishey.by"/>
+                <button className="logoBtn" onClick={() => {
+                    window.location.replace("/");
+                    Cookies.set("logged", false);
+                }}>
+                    <img src={logo} className="logo" alt="vishey.by"/>
+                </button>
                 <div className="block">
                     {
                         size > 500 &&

@@ -3,6 +3,8 @@
     border: 1px solid #004381;
     background: none;
     transition: 0.5s;
+    text-decoration: none;
+    color: #004381;
 }
 
 .button:hover {

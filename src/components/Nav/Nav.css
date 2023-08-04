@@ -15,6 +15,11 @@
     align-items: center;
 }
 
+.logoBtn {
+    background: none;
+    border: none;
+}
+
 .block {
     display: flex;
     flex-direction: row;

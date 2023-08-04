@@ -7,6 +7,7 @@
 .inputBlock {
     display: flex;
     flex-direction: row;
+    padding: 0 15px 0 0;
 }
 
 .searchBtn {
@@ -27,6 +28,7 @@
     padding: 15px;
     width: 90%;
     outline: none;
+    font-size: 20px;
 }
 
 .searchInput::placeholder {
@@ -35,6 +37,9 @@
 
 .category {
     padding: 8px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .category:hover {

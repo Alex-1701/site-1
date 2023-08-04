@@ -2,7 +2,7 @@ import './Cards.css';
 import Card from "../Card/Card";
 import React from "react";
 
-export default function Cards() {
+export default function Cards(props) {
     let cards = [
         {
             path: "/database/Животные/image1.png",
@@ -33,7 +33,7 @@ export default function Cards() {
         <div className="cards">
             {
                 cards.map(c => {
-                    return (<Card card={c}/>);
+                    return (<Card card={c} isLogged={props.isLogged}/>);
                 })
             }
         </div>
