@@ -1,16 +1,28 @@
-import "./SideNav.css";
-import search from "../../img/search.svg";
+import { useEffect, useState } from "react";
+import Link from "../Link/Link";
 import Button from "../Button/Button";
+import search from "../../img/search.svg";
 import edit from "../../img/edit.svg";
 import remove from "../../img/delete.svg";
-import Link from "../Link/Link";
 import insta from "../../img/insta.svg";
 import telegram from "../../img/telegram.svg";
 import tiktok from "../../img/tiktok.svg";
 import plus from "../../img/plus.svg";
+import {
+  CATEGORIES_COLLECTION,
+  FirestoreApi,
+} from "../../services";
+
+import "./SideNav.css";
 
 export default function SideNav(props) {
-  let categories = ["Животные", "Автомобили", "Цветы"];
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    FirestoreApi.getAll(CATEGORIES_COLLECTION).then((res) => {
+      setCategories(res);
+    });
+  }, []);
 
   return (
     <div className="side">
@@ -31,9 +43,9 @@ export default function SideNav(props) {
         </button>
       </div>
       {categories.map((c) => (
-        <div key={c} className="side__category">
+        <div key={c.id} className="side__category">
           <div className="category__block">
-            <p className="category__name">{c}</p>
+            <p className="category__name">{c.name}</p>
           </div>
           {props.isLogged === "true" && (
             <div>
