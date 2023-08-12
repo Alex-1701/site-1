@@ -2,7 +2,7 @@ import './EnterBtn.css';
 
 export default function EnterBtn() {
     return (
-        <a className="button" href="/login">
+        <a className="block__button" href="/login">
             Войти
         </a>
     );

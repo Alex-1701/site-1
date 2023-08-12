@@ -5,7 +5,7 @@ export default function Button({logo, name, logic}) {
         <button type="button" className="btn" onClick={() => {
             logic();
         }}>
-            <img className="btnImg" src={logo} alt={name}/>
+            <img className="btn_img" src={logo} alt={name}/>
         </button>
     );
 }

@@ -1,4 +1,4 @@
-.button {
+.block__button {
     padding: 8px 27px;
     border: 1px solid #004381;
     background: none;
@@ -7,7 +7,7 @@
     color: #004381;
 }
 
-.button:hover {
+.block__button:hover {
     background: #004381;
     color: #60BDF8;
     transition: 0.5s;
@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 500px) {
-    .button {
+    .block__button {
         padding: 7px 18px;
     }
 }

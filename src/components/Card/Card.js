@@ -1,28 +1,21 @@
 import './Card.css';
 import Button from "../Button/Button";
-import edit from "../../img/edit.svg";
 import remove from "../../img/delete.svg";
 
 export default function Card(props) {
-
     return (
-        <div className="card">
+        <div className="cards__card">
             {
                 props.isLogged === "true" &&
                 (
-                    <div className="wrapBtn">
-                        <Button logo={edit} name="edit" logic={() => {
-                            alert("edit")
-                        }}/>
+                    <div className="card__wrap">
                         <Button logo={remove} name="remove" logic={() => {
                             alert("delete")
                         }}/>
                     </div>
                 )
             }
-            <div className="image">
-                <img src={props.card.url} alt={props.card.name}/>
-            </div>
+            <img className="card__img" src={props.card.url} alt={props.card.name}/>
             <p>{props.card.name}</p>
         </div>
     );
