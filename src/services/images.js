@@ -1,5 +1,5 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "./firebase";
 
 const IMAGES = "images";
 const CITIES = "cities";
