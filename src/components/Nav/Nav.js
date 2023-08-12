@@ -19,7 +19,7 @@ export default function Nav() {
                     size < 500 &&
                     <img src={menu} className="menu" alt="menu"/>
                 }
-                <button className="logoBtn" onClick={() => {
+                <button type="button" className="logoBtn" onClick={() => {
                     window.location.replace("/");
                     Cookies.set("logged", false);
                 }}>

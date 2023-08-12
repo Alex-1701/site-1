@@ -6,10 +6,13 @@ export default function Login() {
         <div className="wrapLogin">
             <input id="login" type="text" className="login" placeholder="Логин"/>
             <input id="password" type="password" className="login" placeholder="Пароль"/>
-            <button className="enterBtn" onClick={() => {
-                isLogged(document.getElementById("login").value.trim(),
-                    document.getElementById("password").value.trim()) &&
-                window.location.replace("/admin");
+            <button type="button" className="enterBtn" onClick={() => {
+                if (isLogged(
+                  document.getElementById("login").value.trim(),
+                  document.getElementById("password").value.trim()
+                )){
+                  window.location.replace("/admin");
+                }
             }}>
                 Войти
             </button>

@@ -4,10 +4,11 @@ import Button from "../Button/Button";
 import edit from "../../img/edit.svg";
 import remove from "../../img/delete.svg";
 
-export default function SideNav(props) {
+// eslint-disable-next-line react/prop-types
+export default function SideNav({ isLogged }) {
   let categories = ["Животные", "Автомобили", "Цветы"];
   let side =
-    props.isLogged === "false"
+    isLogged === "false"
       ? categories.map((c) => <div key={c} className="category">{c}</div>)
       : categories.map((c) => (
           <div key={c} className="category">
@@ -36,6 +37,7 @@ export default function SideNav(props) {
       <div className="inputBlock">
         <input type="text" placeholder="Поиск..." className="searchInput" />
         <button
+          type="button"
           className="searchBtn"
           onClick={() => {
             alert("search");
