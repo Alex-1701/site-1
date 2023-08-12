@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Card from "../Card/Card";
 import AddImageCard from "../Card/AddImageCard";
-import {
-  IMAGES_COLLECTION,
-  FirestoreApi,
-} from "../../services";
+import { IMAGES_COLLECTION, FirestoreApi } from "../../services";
 
 import "./Cards.css";
 
@@ -20,14 +17,14 @@ export default function Cards({ isLogged }) {
 
   return (
     <div className="cards">
-      {images.map((image) => {
-        return <Card key={image.id} card={image} isLogged={isLogged} />;
-      })}
-      <AddImageCard></AddImageCard>
+      {images.map((image) => (
+        <Card key={image.id} card={image} isLogged={isLogged} />
+      ))}
+      <AddImageCard />
     </div>
   );
 }
 
 Cards.propTypes = {
-  isLogged: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
