@@ -1,10 +1,19 @@
+import React from "react";
 import "./Link.css";
+import PropTypes from "prop-types";
 
-export default function Link(props) {
-  return (
-    <a href={props.href} className="links__link">
-      <img src={props.logo} alt={props.name} />
-      <p>{props.name}</p>
-    </a>
-  );
+export default function Link({href, logo, name}) {
+    return (
+        <a href={href} className="links__link">
+            <img src={logo} alt={name}/>
+            <p>{name}</p>
+        </a>
+    );
+}
+
+
+Link.propTypes = {
+    href: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
 }

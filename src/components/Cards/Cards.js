@@ -1,26 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 import Card from "../Card/Card";
 import AddImageCard from "../Card/AddImageCard";
-import { getAllImages } from "../../services/images";
+import {getAllImages} from "../../services/images";
 
 import "./Cards.css";
 
-export default function Cards(props) {
-  const [images, setImages] = useState([]);
+export default function Cards({isLogged}) {
+    const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    getAllImages().then((res) => {
-      console.log(res);
-      setImages(res);
-    });
-  }, []);
+    useEffect(() => {
+        getAllImages().then((res) => {
+            setImages(res);
+        });
+    }, []);
 
-  return (
-    <div className="cards">
-      {images.map((image) => {
-        return <Card key={image.url} card={image} isLogged={props.isLogged} />;
-      })}
-      <AddImageCard></AddImageCard>
-    </div>
-  );
+    return (
+        <div className="cards">
+            {
+                images.map(image => <Card key={image.url} card={image} isLogged={isLogged}/>)
+            }
+            <AddImageCard/>
+        </div>
+    );
+}
+
+Cards.propTypes = {
+    isLogged: PropTypes.string.isRequired
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import "./EnterBtn.css";
 
 export default function EnterBtn() {
