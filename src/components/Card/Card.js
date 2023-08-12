@@ -21,7 +21,7 @@ export default function Card(props) {
                 )
             }
             <div className="image">
-                <img src={props.card.path} alt={props.card.name}/>
+                <img src={props.card.url} alt={props.card.name}/>
             </div>
             <p>{props.card.name}</p>
         </div>
