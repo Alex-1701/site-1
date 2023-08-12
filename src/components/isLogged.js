@@ -1,7 +1,7 @@
 import CryptoJS from "react-native-crypto-js";
 import Cookies from 'js-cookie';
 
-//TODO хеши храни!!!
+// TODO хеши храни!!!
 let loginHash = CryptoJS.MD5("admin").toString();
 let passwordHash = CryptoJS.MD5("adminp").toString();
 
