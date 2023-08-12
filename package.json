@@ -5,7 +5,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "prettier": "prettier -c ./**/*.{js,jsx,css} --write"
   },
   "dependencies": {
     "firebase": "^10.1.0",

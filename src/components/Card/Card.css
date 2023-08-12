@@ -1,81 +1,81 @@
 .cards__card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 270px;
-    height: 215px;
-    margin: 15px;
-    padding: 5px;
-    box-shadow: 0 4px 30px 0 rgba(0, 33, 64, 0.30);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 270px;
+  height: 215px;
+  margin: 15px;
+  padding: 5px;
+  box-shadow: 0 4px 30px 0 rgba(0, 33, 64, 0.3);
 }
 
 .card__wrap {
-    position: absolute;
-    right: 0;
-    top: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .card__block {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card__choose {
-    width: auto;
-    height: 131px;
+  width: auto;
+  height: 131px;
 }
 
 .card__file {
-    width: 248px;
-    height: 131px;
-    background: #D9D9D9;
-    cursor: pointer;
+  width: 248px;
+  height: 131px;
+  background: #d9d9d9;
+  cursor: pointer;
 }
 
 .card__name {
-    width: 248px;
-    padding: 3px 8px;
-    border: none;
-    border-bottom: 1px solid #004381;
-    outline: none;
-    color: #004381;
-    font-size: 14px;
-    font-weight: 300;
+  width: 248px;
+  padding: 3px 8px;
+  border: none;
+  border-bottom: 1px solid #004381;
+  outline: none;
+  color: #004381;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .card__name::placeholder {
-    color: #004381;
+  color: #004381;
 }
 
 .red {
-    border-bottom: 1px solid red;
+  border-bottom: 1px solid red;
 }
 
 .red::placeholder {
-    color: red;
+  color: red;
 }
 
 .card__save {
-    padding: 7px 18px;
-    background: #ABDFFF;
-    color: #004381;
-    border: none;
-    cursor: pointer;
-    font-weight: 400;
-    transition: 0.5s;
+  padding: 7px 18px;
+  background: #abdfff;
+  color: #004381;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  transition: 0.5s;
 }
 
 .card__save:hover {
-    background: #004381;
-    color: #60BDF8;
-    transition: 0.5s;
+  background: #004381;
+  color: #60bdf8;
+  transition: 0.5s;
 }
 
 .card__img {
-    height: 170px;
-    width: 270px;
-    object-fit: contain;
+  height: 170px;
+  width: 270px;
+  object-fit: contain;
 }

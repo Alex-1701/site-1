@@ -1,9 +1,9 @@
-import './EnterBtn.css';
+import "./EnterBtn.css";
 
 export default function EnterBtn() {
-    return (
-        <a className="block__button" href="/login">
-            Войти
-        </a>
-    );
+  return (
+    <a className="block__button" href="/login">
+      Войти
+    </a>
+  );
 }

@@ -5,11 +5,11 @@ import React from "react";
 import Cookies from "js-cookie";
 
 export default function Main() {
-    let isLogged = Cookies.get("logged");
-    return (
-        <div className="main">
-            <SideNav isLogged={isLogged}/>
-            <Cards isLogged={isLogged}/>
-        </div>
-    );
+  let isLogged = Cookies.get("logged");
+  return (
+    <div className="main">
+      <SideNav isLogged={isLogged} />
+      <Cards isLogged={isLogged} />
+    </div>
+  );
 }

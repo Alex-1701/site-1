@@ -80,7 +80,9 @@
     "prefer-const": "warn",
     "react/react-in-jsx-scope": "warn",
     "react/prop-types": "warn",
-    "react/destructuring-assignment": "warn"
+    "react/destructuring-assignment": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn"
   },
   "settings": {
     "import/resolver": {
