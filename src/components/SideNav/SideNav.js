@@ -15,7 +15,7 @@ import {
 
 import "./SideNav.css";
 
-export default function SideNav(props) {
+export default function SideNav({isLogged}) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -43,11 +43,11 @@ export default function SideNav(props) {
         </button>
       </div>
       {categories.map((c) => (
-        <div key={c.id} className="side__category">
+        <div key={c} className="side__category">
           <div className="category__block">
-            <p className="category__name">{c.name}</p>
+            <p className="category__name">{c}</p>
           </div>
-          {props.isLogged === "true" && (
+          {isLogged && (
             <div>
               <Button
                 logo={edit}
@@ -80,11 +80,15 @@ export default function SideNav(props) {
           href="https://www.tiktok.com/@vishey.by?_t=8ekSjfMfRME&_r=1"
         />
       </div>
-      {props.isLogged === "true" && (
+      {isLogged && (
         <button type="button" className="btn center">
           <img src={plus} alt="plus" />
         </button>
       )}
     </div>
   );
+}
+
+SideNav.propsTypes = {
+    isLogged: PropTypes.bool.isRequired
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import "./Nav.css";
 import Cookies from "js-cookie";
 import logo from "../../img/logo.svg";
@@ -12,6 +13,7 @@ export default function Nav() {
   return (
     <nav className="nav__wrapper">
       <div className="wrapper__wrap">
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
         <img
           src={menu}
           className="menu"
