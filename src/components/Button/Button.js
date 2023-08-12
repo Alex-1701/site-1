@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from 'prop-types';
+
 import "./Button.css";
 
 export default function Button({ logo, name, logic }) {
@@ -13,3 +16,9 @@ export default function Button({ logo, name, logic }) {
     </button>
   );
 }
+
+Button.propTypes = {
+  logo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  logic: PropTypes.func.isRequired,
+};
