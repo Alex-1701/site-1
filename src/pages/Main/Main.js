@@ -1,8 +1,8 @@
 import "./Main.css";
-import SideNav from "../SideNav/SideNav";
-import Cards from "../Cards/Cards";
+import SideNav from "../../components/SideNav/SideNav";
+import Cards from "../../components/Cards/Cards";
 import React from "react";
-import WindowSize from "../WindowSize";
+import WindowSize from "../../components/WindowSize";
 import Cookies from "js-cookie";
 
 export default function Main() {

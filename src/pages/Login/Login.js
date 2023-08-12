@@ -1,5 +1,5 @@
 import './Login.css';
-import isLogged from "../isLogged";
+import isLogged from "../../components/isLogged";
 
 export default function Login() {
     return (

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Nav from './components/Nav/Nav';
-import Main from "./components/Main/Main";
-import Login from "./components/Login/Login";
+import Main from "./pages/Main/Main";
+import Login from "./pages/Login/Login";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
