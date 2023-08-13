@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Cards, SideNav } from "../../components";
-import { isLogged } from "../../services";
+import React, {useState} from "react";
+import {Cards, SideNav} from "../../components";
+import {isLogged} from "../../services";
 
 import "./Main.css";
 
 export function Main() {
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [searchName, setSearchName] = useState("");
 
   const handleSelectCategory = (id) => {
     setSelectedCategoryId(id);
@@ -19,8 +20,13 @@ export function Main() {
         isLogged={isUserLogged}
         selectedCategoryId={selectedCategoryId}
         handleSelectCategory={handleSelectCategory}
+        searchName={searchName}
+        setSearchName={setSearchName}
       />
-      <Cards selectedCategoryId={selectedCategoryId} isLogged={isUserLogged} />
+      <Cards selectedCategoryId={selectedCategoryId}
+             isLogged={isUserLogged}
+             searchName={searchName}
+      />
     </div>
   );
 }

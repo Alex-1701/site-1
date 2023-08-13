@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import { AddImageCard, Card } from "../Card";
-import { IMAGES_COLLECTION, FirestoreApi, StorageApi } from "../../services";
+import {AddImageCard, Card} from "../Card";
+import {IMAGES_COLLECTION, FirestoreApi, StorageApi} from "../../services";
 
 import "./Cards.css";
 
-export function Cards({ isLogged, selectedCategoryId }) {
+export function Cards({isLogged, selectedCategoryId, searchName}) {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [newImageName, setNewImageName] = useState("");
@@ -59,13 +59,18 @@ export function Cards({ isLogged, selectedCategoryId }) {
     });
   };
 
+  const filterFunc = (image) => {
+    if (searchName === "") {
+      return image.category === selectedCategoryId || selectedCategoryId === ""
+    } else {
+      return image.name.toLowerCase().match(`(${searchName.toLowerCase()})`)
+    }
+  }
+
   return (
     <div className="cards">
       {images
-        .filter(
-          (image) =>
-            image.category === selectedCategoryId || selectedCategoryId === "",
-        )
+        .filter(image => filterFunc(image))
         .map((image) => (
           <Card
             key={image.id}
@@ -92,4 +97,5 @@ export function Cards({ isLogged, selectedCategoryId }) {
 Cards.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   selectedCategoryId: PropTypes.string.isRequired,
+  searchName: PropTypes.string.isRequired,
 };
