@@ -7,7 +7,7 @@
 }
 
 .side__category_selected {
-  border: 2px solid black;
+  background: #60bdf8;
 }
 
 .side__category:hover {
