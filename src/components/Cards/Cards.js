@@ -62,9 +62,8 @@ export function Cards({isLogged, selectedCategoryId, searchName}) {
   const filterFunc = (image) => {
     if (searchName === "") {
       return image.category === selectedCategoryId || selectedCategoryId === ""
-    } else {
-      return image.name.toLowerCase().match(`(${searchName.toLowerCase()})`)
     }
+    return image.name.toLowerCase().match(`(${searchName.toLowerCase()})`)
   }
 
   return (
