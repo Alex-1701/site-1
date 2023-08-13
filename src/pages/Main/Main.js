@@ -1,15 +1,26 @@
-import "./Main.css";
-import React from "react";
-import Cookies from "js-cookie";
-import SideNav from "../../components/SideNav/SideNav";
-import Cards from "../../components/Cards/Cards";
+import React, { useState } from "react";
+import { Cards, SideNav } from "../../components";
+import { isLogged } from "../../services";
 
-export default function Main() {
-    const isLogged = Cookies.get("isLogged") === "true";
-    return (
-        <div className="main">
-            <SideNav isLogged={isLogged}/>
-            <Cards isLogged={isLogged}/>
-        </div>
-    );
+import "./Main.css";
+
+export function Main() {
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
+
+  const handleSelectCategory = (id) => {
+    setSelectedCategoryId(id);
+  };
+
+  const isUserLogged = isLogged();
+
+  return (
+    <div className="main">
+      <SideNav
+        isLogged={isUserLogged}
+        selectedCategoryId={selectedCategoryId}
+        handleSelectCategory={handleSelectCategory}
+      />
+      <Cards selectedCategoryId={selectedCategoryId} isLogged={isUserLogged} />
+    </div>
+  );
 }

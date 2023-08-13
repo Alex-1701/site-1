@@ -1,10 +1,25 @@
 import React from "react";
+import { isLogged, loginPage, logOut, mainPage } from "../../services";
+
 import "./EnterBtn.css";
 
-export default function EnterBtn() {
+export function EnterBtn() {
+  const isUserLogged = isLogged();
+
   return (
-    <a className="block__button" href="/login">
-      Войти
-    </a>
+    <button
+      type="button"
+      className="block__button"
+      onClick={() => {
+        if (isUserLogged) {
+          logOut();
+          window.location.replace(mainPage);
+        } else {
+          window.location.replace(loginPage);
+        }
+      }}
+    >
+      {isUserLogged ? "Выйти" : "Войти"}
+    </button>
   );
 }

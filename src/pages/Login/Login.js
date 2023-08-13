@@ -1,8 +1,9 @@
 import React from "react";
-import "./Login.css";
-import isLogged from "../../components/isLogged";
+import { adminPage, logIn } from "../../services";
 
-export default function Login() {
+import "./Login.css";
+
+export function Login() {
   return (
     <div className="wrapLogin">
       <input id="login" type="text" className="login" placeholder="Логин" />
@@ -17,12 +18,12 @@ export default function Login() {
         className="enterBtn"
         onClick={() => {
           if (
-            isLogged(
+            logIn(
               document.getElementById("login").value.trim(),
               document.getElementById("password").value.trim(),
             )
           ) {
-            window.location.replace("/admin");
+            window.location.replace(adminPage);
           }
         }}
       >

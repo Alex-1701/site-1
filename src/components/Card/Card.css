@@ -68,6 +68,21 @@
   transition: 0.5s;
 }
 
+.card__save:disabled {
+  background: #d9d9d9;
+  color: #004381;
+}
+
+.card__save:disabled:hover {
+  background: #d9d9d9;
+  color: #004381;
+  cursor: default;
+}
+
+.card__save_loading {
+  cursor: default;
+}
+
 .card__save:hover {
   background: #004381;
   color: #60bdf8;

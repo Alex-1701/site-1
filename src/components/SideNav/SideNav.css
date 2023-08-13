@@ -2,6 +2,8 @@
   background: #abdfff;
   width: 270px;
   position: relative;
+
+  border: 1px solid black;
 }
 
 .side__block {
@@ -35,27 +37,6 @@
   color: rgba(0, 67, 129, 0.7);
 }
 
-.side__category {
-  padding: 8px 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.side__category:hover {
-  background: #60bdf8;
-  cursor: pointer;
-}
-
-.category__name {
-  margin: 0;
-}
-
-.category__block {
-  display: block;
-  flex: 1;
-}
-
 .side__links {
   display: none;
 }
@@ -71,6 +52,13 @@
   flex-direction: row;
   justify-content: center;
   margin: 0 auto;
+}
+
+.category_name_input {
+  background-color: transparent;
+  border: 2px solid rgba(0, 67, 129, 0.7);
+  margin: 8px 15px;
+  font-size: 16px;
 }
 
 @media (max-width: 500px) {

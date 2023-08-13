@@ -1,26 +1,57 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Link from "../Link/Link";
-import Button from "../Button/Button";
+import { SideNavItem } from "../SideNavItem";
+import { Button } from "../Button";
+import { Link } from "../Link";
+import { CATEGORIES_COLLECTION, FirestoreApi } from "../../services";
 import search from "../../img/search.svg";
-import edit from "../../img/edit.svg";
-import remove from "../../img/delete.svg";
 import insta from "../../img/insta.svg";
 import telegram from "../../img/telegram.svg";
 import tiktok from "../../img/tiktok.svg";
 import plus from "../../img/plus.svg";
-import { CATEGORIES_COLLECTION, FirestoreApi } from "../../services";
+import check from "../../img/check_mark.svg";
 
 import "./SideNav.css";
 
-export default function SideNav({ isLogged }) {
+export function SideNav({
+  isLogged,
+  selectedCategoryId,
+  handleSelectCategory,
+}) {
   const [categories, setCategories] = useState([]);
+  const [isCreateNewActive, setIsCreateNewActive] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState("");
 
   useEffect(() => {
     FirestoreApi.getAll(CATEGORIES_COLLECTION).then((res) => {
       setCategories(res);
     });
   }, []);
+
+  const handleCreateCategory = async () => {
+    await FirestoreApi.addNew(CATEGORIES_COLLECTION, { name: newCategoryName });
+    setIsCreateNewActive(false);
+    setNewCategoryName("");
+    FirestoreApi.getAll(CATEGORIES_COLLECTION).then((res) => {
+      setCategories(res);
+    });
+  };
+
+  const handleRemoveCategory = async (category) => {
+    await FirestoreApi.remove(CATEGORIES_COLLECTION, category.id);
+    FirestoreApi.getAll(CATEGORIES_COLLECTION).then((res) => {
+      setCategories(res);
+    });
+  };
+
+  const handleUpdateCategory = async (category, newName) => {
+    await FirestoreApi.update(CATEGORIES_COLLECTION, category.id, {
+      name: newName,
+    });
+    FirestoreApi.getAll(CATEGORIES_COLLECTION).then((res) => {
+      setCategories(res);
+    });
+  };
 
   return (
     <div className="side">
@@ -40,30 +71,22 @@ export default function SideNav({ isLogged }) {
           <img className="block__search_img" src={search} alt="search" />
         </button>
       </div>
+      <SideNavItem
+        handleSelect={handleSelectCategory}
+        isLogged={isLogged}
+        isSelected={selectedCategoryId === ""}
+        isDefault
+      />
       {categories.map((c) => (
-        <div key={c.id} className="side__category">
-          <div className="category__block">
-            <p className="category__name">{c.name}</p>
-          </div>
-          {isLogged && (
-            <div>
-              <Button
-                logo={edit}
-                name="edit"
-                logic={() => {
-                  alert("edit");
-                }}
-              />
-              <Button
-                logo={remove}
-                name="remove"
-                logic={() => {
-                  alert("delete");
-                }}
-              />
-            </div>
-          )}
-        </div>
+        <SideNavItem
+          key={c.id}
+          isLogged={isLogged}
+          category={c}
+          handleRemove={handleRemoveCategory}
+          handleUpdate={handleUpdateCategory}
+          isSelected={selectedCategoryId === c.id}
+          handleSelect={handleSelectCategory}
+        />
       ))}
       <div className="side__links">
         <Link
@@ -78,10 +101,29 @@ export default function SideNav({ isLogged }) {
           href="https://www.tiktok.com/@vishey.by?_t=8ekSjfMfRME&_r=1"
         />
       </div>
-      {isLogged && (
-        <button type="button" className="btn center">
+      {isLogged && !isCreateNewActive && (
+        <button
+          type="button"
+          className="btn center"
+          onClick={() => setIsCreateNewActive(true)}
+        >
           <img src={plus} alt="plus" />
         </button>
+      )}
+      {isLogged && isCreateNewActive && (
+        <div>
+          <input
+            type="text"
+            value={newCategoryName}
+            className="category_name_input"
+            onChange={(e) => setNewCategoryName(e.target.value)}
+          />
+          <Button
+            onClick={handleCreateCategory}
+            name="Создать новую категорию"
+            logo={check}
+          />
+        </div>
       )}
     </div>
   );
@@ -89,4 +131,6 @@ export default function SideNav({ isLogged }) {
 
 SideNav.propTypes = {
   isLogged: PropTypes.bool.isRequired,
+  selectedCategoryId: PropTypes.string.isRequired,
+  handleSelectCategory: PropTypes.func.isRequired,
 };

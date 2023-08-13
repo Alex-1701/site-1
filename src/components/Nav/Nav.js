@@ -1,15 +1,17 @@
 import React from "react";
-import "./Nav.css";
 import Cookies from "js-cookie";
 import logo from "../../img/logo.svg";
 import telegram from "../../img/telegram.svg";
 import insta from "../../img/insta.svg";
 import tiktok from "../../img/tiktok.svg";
 import menu from "../../img/menu.svg";
-import Link from "../Link/Link";
-import EnterBtn from "../EnterBth/EnterBtn";
+import { Link } from "../Link";
+import { EnterBtn } from "../EnterBth";
 
-export default function Nav() {
+import "./Nav.css";
+import { mainPage } from "../../services";
+
+export function Nav() {
   return (
     <nav className="nav__wrapper">
       <div className="wrapper__wrap">
@@ -26,7 +28,7 @@ export default function Nav() {
           type="button"
           className="wrap__logo"
           onClick={() => {
-            window.location.replace("/");
+            window.location.replace(mainPage);
             Cookies.set("logged", false);
           }}
         >

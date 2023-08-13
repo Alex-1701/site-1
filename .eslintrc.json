@@ -22,6 +22,7 @@
       {
         "extensions": [
           ".js",
+          ".jsx",
           ".ts",
           ".tsx"
         ]
@@ -90,9 +91,10 @@
       "node": {
         "extensions": [
           ".js",
-          ".json",
+          ".jsx",
           ".ts",
-          ".tsx"
+          ".tsx",
+          ".json"
         ]
       }
     }
