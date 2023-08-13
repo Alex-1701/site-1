@@ -111,11 +111,12 @@ export function SideNav({
         </button>
       )}
       {isLogged && isCreateNewActive && (
-        <div>
+        <div className="side__block">
           <input
             type="text"
+            placeholder="Название..."
             value={newCategoryName}
-            className="category_name_input"
+            className="block__search_input"
             onChange={(e) => setNewCategoryName(e.target.value)}
           />
           <Button
