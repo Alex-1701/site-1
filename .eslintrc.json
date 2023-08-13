@@ -1,0 +1,102 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:react-hooks/recommended"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    "lines-between-class-members": "off",
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "import/no-unresolved": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      "ForInStatement"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-shadow": "off",
+    "no-underscore-dangle": "warn",
+    "prefer-regex-literals": "warn",
+    "prefer-template": "warn",
+    "import/no-extraneous-dependencies": "off",
+    "spaced-comment": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "no-constant-condition": "warn",
+    "camelcase": "off",
+    "object-shorthand": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "react/jsx-boolean-value": "warn",
+    "import/no-duplicates": "warn",
+    "react/require-default-props": "warn",
+    "dot-notation": "warn",
+    "arrow-body-style": "warn",
+    "no-debugger": "warn",
+    "prefer-destructuring": "warn",
+    "no-extra-boolean-cast": "warn",
+    "import/order": "warn",
+    "no-else-return": "warn",
+    "no-empty": "warn",
+    "jsx-a11y/label-has-associated-control": "warn",
+    "react/function-component-definition": "warn",
+    "react/self-closing-comp": "warn",
+    "no-use-before-define": "warn",
+    "no-unused-vars": "warn",
+    "prefer-const": "warn",
+    "react/react-in-jsx-scope": "warn",
+    "react/prop-types": "warn",
+    "react/destructuring-assignment": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "no-alert": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".json"
+        ]
+      }
+    }
+  }
+}

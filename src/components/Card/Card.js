@@ -1,29 +1,36 @@
-import './Card.css';
-import Button from "../Button/Button";
-import edit from "../../img/edit.svg";
+import React from "react";
+import PropTypes from "prop-types";
+import { Button } from "../Button";
 import remove from "../../img/delete.svg";
 
-export default function Card(props) {
+import "./Card.css";
 
-    return (
-        <div className="card">
-            {
-                props.isLogged === "true" &&
-                (
-                    <div className="wrapBtn">
-                        <Button logo={edit} name="edit" logic={() => {
-                            alert("edit")
-                        }}/>
-                        <Button logo={remove} name="remove" logic={() => {
-                            alert("delete")
-                        }}/>
-                    </div>
-                )
-            }
-            <div className="image">
-                <img src={props.card.path} alt={props.card.name}/>
-            </div>
-            <p>{props.card.name}</p>
+export function Card({ isLogged, card, handleRemove }) {
+  return (
+    <div className="cards__card">
+      {isLogged && (
+        <div className="card__wrap">
+          <Button
+            logo={remove}
+            name="remove"
+            onClick={() => {
+              handleRemove(card);
+            }}
+          />
         </div>
-    );
+      )}
+      <img className="card__img" src={card.url} alt={card.name} />
+      <p>{card.name}</p>
+    </div>
+  );
 }
+
+Card.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  card: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
+  handleRemove: PropTypes.func.isRequired,
+};

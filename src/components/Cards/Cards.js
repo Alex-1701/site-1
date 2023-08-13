@@ -1,41 +1,95 @@
-import './Cards.css';
-import Card from "../Card/Card";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { AddImageCard, Card } from "../Card";
+import { IMAGES_COLLECTION, FirestoreApi, StorageApi } from "../../services";
 
-export default function Cards(props) {
-    let cards = [
-        {
-            path: "/database/Животные/image1.png",
-            name: "Барсик"
-        },
-        {
-            path: "/database/Животные/image 5.png",
-            name: "Котики"
-        },
-        {
-            path: "./database/Животные/image 3.png",
-            name: "Ракета"
-        },
-        {
-            path: "/database/Животные/image 6.png",
-            name: "Рыжик"
-        },
-        {
-            path: "/database/Животные/image 4.png",
-            name: "Ёж"
-        },
-        {
-            path: "/database/Животные/image 7.png",
-            name: "Гав"
-        },
-    ]
-    return (
-        <div className="cards">
-            {
-                cards.map(c => {
-                    return (<Card card={c} isLogged={props.isLogged}/>);
-                })
-            }
-        </div>
-    );
+import "./Cards.css";
+
+export function Cards({ isLogged, selectedCategoryId }) {
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [newImageName, setNewImageName] = useState("");
+  const [file, setFile] = useState(null);
+  const [fileURL, setFileURL] = useState("");
+
+  useEffect(() => {
+    FirestoreApi.getAll(IMAGES_COLLECTION).then((res) => {
+      setImages(res);
+    });
+  }, []);
+
+  const handleRemove = async (image) => {
+    await FirestoreApi.remove(IMAGES_COLLECTION, image.id);
+    await StorageApi.remove(image.id);
+    setImages(images.filter((img) => img.id !== image.id));
+  };
+
+  const handleAdd = async () => {
+    setIsLoading(true);
+
+    if (newImageName === "" || !file) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+    const newImgId = await FirestoreApi.addNew(IMAGES_COLLECTION, {
+      name: newImageName,
+      category: selectedCategoryId,
+      url: "",
+    });
+
+    await StorageApi.addNew(file, newImgId);
+
+    await StorageApi.getURL(newImgId).then((fileUrl) => {
+      FirestoreApi.update(IMAGES_COLLECTION, newImgId, {
+        name: newImageName,
+        category: selectedCategoryId,
+        url: fileUrl,
+      });
+    });
+
+    setIsLoading(false);
+    setNewImageName("");
+    setFile(null);
+    setFileURL("");
+
+    FirestoreApi.getAll(IMAGES_COLLECTION).then((res) => {
+      setImages(res);
+    });
+  };
+
+  return (
+    <div className="cards">
+      {images
+        .filter(
+          (image) =>
+            image.category === selectedCategoryId || selectedCategoryId === "",
+        )
+        .map((image) => (
+          <Card
+            key={image.id}
+            card={image}
+            isLogged={isLogged}
+            handleRemove={handleRemove}
+          />
+        ))}
+      {isLogged && selectedCategoryId !== "" && (
+        <AddImageCard
+          newImageName={newImageName}
+          setNewImageName={setNewImageName}
+          setFile={setFile}
+          fileUrl={fileURL}
+          setFileUrl={setFileURL}
+          isLoading={isLoading}
+          handleAdd={handleAdd}
+        />
+      )}
+    </div>
+  );
 }
+
+Cards.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  selectedCategoryId: PropTypes.string.isRequired,
+};

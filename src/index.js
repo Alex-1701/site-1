@@ -1,26 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import Nav from './components/Nav/Nav';
-import Main from "./components/Main/Main";
-import Login from "./components/Login/Login";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route
-} from 'react-router-dom'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Nav } from "./components";
+import { Login, Main } from "./pages";
+import { adminPage, loginPage, mainPage } from "./services";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import "./index.css";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-    <React.StrictMode>
-        <Router>
-            <Nav/>
-            <Routes>
-                <Route path="/" element={<Main/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/admin" element={<Main/>}/>
-            </Routes>
-        </Router>
-    </React.StrictMode>
+  <React.StrictMode>
+    <Router>
+      <Nav />
+      <Routes>
+        <Route path={mainPage} element={<Main />} />
+        <Route path={loginPage} element={<Login />} />
+        <Route path={adminPage} element={<Main />} />
+      </Routes>
+    </Router>
+  </React.StrictMode>,
 );

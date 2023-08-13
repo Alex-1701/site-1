@@ -2,36 +2,35 @@
   "name": "site",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "crypto": "^1.0.1",
-    "js-cookie": "^3.0.5",
-    "next": "^13.4.12",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-native-crypto": "^2.2.0",
-    "react-native-crypto-js": "^1.0.0",
-    "react-router-dom": "^6.14.2",
-    "react-scripts": "5.0.1",
-    "universal-cookie": "^4.0.4",
-    "web-vitals": "^2.1.4"
-  },
-  "browser": {
-    "crypto": false
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint src",
+    "prettier": "prettier -c ./**/*.{js,jsx,css} --write"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "firebase": "^10.1.0",
+    "js-cookie": "^3.0.5",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-native-crypto-js": "^1.0.0",
+    "react-router-dom": "^6.14.2",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.1"
+  },
+  "browser": {
+    "crypto": false
   },
   "browserslist": {
     "production": [

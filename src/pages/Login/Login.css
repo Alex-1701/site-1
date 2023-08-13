@@ -1,0 +1,46 @@
+.wrapLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 30px;
+}
+
+.login {
+  width: 570px;
+  padding: 16px 20px;
+  border: none;
+  border-bottom: 1px solid #004381;
+  outline: none;
+  color: #004381;
+  font-size: 20px;
+}
+
+.login::placeholder {
+  color: #004381;
+}
+
+.enterBtn {
+  padding: 16px 80px;
+  background: #abdfff;
+  color: #004381;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 30px 0;
+  filter: drop-shadow(0px 10px 20px rgba(96, 189, 248, 0.3));
+  transition: 0.5s;
+}
+
+.enterBtn:hover {
+  background: #004381;
+  color: #60bdf8;
+  transition: 0.5s;
+}
+
+@media (max-width: 500px) {
+  .login {
+    width: 240px;
+  }
+}

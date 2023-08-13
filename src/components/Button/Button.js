@@ -1,11 +1,18 @@
-import './Button.css';
+import React from "react";
+import PropTypes from "prop-types";
 
-export default function Button({logo, name, logic}) {
-    return (
-        <button className="btn" onClick={() => {
-            logic();
-        }}>
-            <img className="btnImg" src={logo} alt={name}/>
-        </button>
-    );
+import "./Button.css";
+
+export function Button({ logo, name, onClick }) {
+  return (
+    <button type="button" className="btn" onClick={onClick}>
+      <img className="btn_img" src={logo} alt={name} />
+    </button>
+  );
 }
+
+Button.propTypes = {
+  logo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
