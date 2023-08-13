@@ -2,7 +2,7 @@ import CryptoJS from "react-native-crypto-js";
 import Cookies from "js-cookie";
 
 const loginHash = "21232f297a57a5a743894a0e4a801fc3";
-const passwordHash = "a14dbe401885797b43ce9d66e98968c3";
+const passwordHash = "ba64b3bf5c60c619fdc29402f38f7186";
 
 export function logIn(login, password) {
   if (
