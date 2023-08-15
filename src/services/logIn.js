@@ -1,8 +1,19 @@
 import CryptoJS from "react-native-crypto-js";
 import Cookies from "js-cookie";
+import preval from "preval.macro";
 
-const loginHash = "21232f297a57a5a743894a0e4a801fc3";
-const passwordHash = "ba64b3bf5c60c619fdc29402f38f7186";
+const loginHash = preval`module.exports = () => { 
+  const CryptoJS = require ("react-native-crypto-js"); 
+  return CryptoJS.MD5(process.env.REACT_APP_LOGIN).toString(); 
+}`;
+
+const passwordHash = preval`module.exports = () => { 
+  const CryptoJS = require ("react-native-crypto-js"); 
+  return CryptoJS.MD5(process.env.REACT_APP_PASSWORD).toString(); 
+}`;
+
+console.log("before", loginHash);
+console.log("before", passwordHash);
 
 export function logIn(login, password) {
   if (
